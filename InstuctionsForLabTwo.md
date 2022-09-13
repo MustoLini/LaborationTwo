@@ -30,11 +30,10 @@ Something similiar to it asking you if you want to add product into the text fil
 			1. Fruit
 			2. Dry-goods
 			3. Meat
-			4. Frezzerfood
-
+			4. Frezzerfood";
 			UserInput=number of what kategory it should be: 
 					
-			"
+			
 			
 			}
 			
