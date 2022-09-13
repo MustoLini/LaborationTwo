@@ -1,11 +1,11 @@
-Laboration 2 // Johannes Danielsson
+***Laboration 2*** // Johannes Danielsson
 
-What classes do I need:
+***What classes do I need:***
 
-FileRead Class: A fileread class where it reads the txt file and checks if there is another line. 
+***FileRead Class:*** A fileread class where it reads the txt file and checks if there is another line. 
 Check also if the kategori is food, if it is food the it will store it in food class.
 
-FileWriter Class: A filewriter class where it should write products you want to add.
+***FileWriter Class:*** A filewriter class where it should write products you want to add.
 Something similiar to it asking you if you want to add product into the text file and then taking in info for example:
 
 		{
@@ -42,13 +42,13 @@ Something similiar to it asking you if you want to add product into the text fil
 
 The Katogories that exist is fruit, dry-goods, meat, frezzerfood
 
-Food/Product class: Here it will add EAN-KOD(streckkod) to the products, be able to print out the price of the food and add it to the shopping list(Another class).
+***Food/Product class:*** Here it will add EAN-KOD(streckkod) to the products, be able to print out the price of the food and add it to the shopping list(Another class).
 If it is removed food item from the array and add it to the shopping list.
 
-Alternitve: Food class holds the basic but like spliting upp the products by kategory and you make a Fruit class that extends from food class.
+***Alternitve:*** Food class holds the basic but like spliting upp the products by kategory and you make a Fruit class that extends from food class.
 
 
-Menu class: Here it will give you options and interduce you to the shop. 
+***Menu class:*** Here it will give you options and interduce you to the shop. 
 
 			The Options it will give you is:
 
@@ -65,7 +65,7 @@ Menu class: Here it will give you options and interduce you to the shop.
 
 		} 
 
-		2. Print out the Food in seprete kategories. ///( So you pick what kategory food you want to pick and the you add it your list in Class Shoppning list ) ) 
+		2. Print out the Food in seprete kategories. ///( So you pick what kategory food you want to pick and the you add it your list in Class Shoppning list)
 		
 		System is prob going to look like this:
 		{
