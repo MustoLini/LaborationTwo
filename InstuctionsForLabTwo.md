@@ -3,8 +3,9 @@
 # What classes do I need:
 
 ## FileRead Class:
-A fileread class where it reads the txt file and checks if there is another line. 
-Check also if the kategori is food, if it is food the it will store it in food class.
+A FileReader class where it reads the txt file and and checks what category the object/food has, Then file reader should place it in that object category.
+
+Also check if there is another line otherwise break.
 
 ## FileWriter Class: 
 A filewriter class where it should write products you want to add.
