@@ -3,17 +3,17 @@
 # What classes do I need:
 
 ## FileRead Class:
-A FileReader class where it reads the txt file and and checks what category the object/food has, Then file reader should place it in that object category.
+A folderFile.FileReader class where it reads the txt file and and checks what category the object/food has, Then file reader should place it in that object category.
 
 Also check if there is another line otherwise break.
 
-## FileWriter Class: 
+## folderFile.FileWriter Class: 
 A filewriter class where it should write products you want to add.
 Something similiar to it asking you if you want to add product into the text file and then taking in info for example:
 
 		{
 			if(!FileRead.exist)
-			FileWriter writer= new file("NewFile.");
+			folderFile.FileWriter writer= new file("NewFile.");
 			
 			AddProduct(){
 			
