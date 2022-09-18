@@ -84,9 +84,8 @@ The Katogories that exist is fruit, dry-goods, meat, frezzerfood
 Here it will add EAN-KOD(streckkod) to the products, be able to print out the price of the food and add it to the shopping list(Another class).
 If it is removed food item from the array and add it to the shopping list.
 
-	Food Class Most have a constructer with 3 intakes that should be String with names of: NameOfProduct, String Price, String Kategory.
-
-	Food should have Getters and setters.
+Food Class Most have a constructer with 3 intakes that should be String with names of: NameOfProduct, String Price, String Kategory.
+Food should have Getters and setters.
 
 ## Alternitve:
 Food class holds the basic but like spliting upp the products by kategory and you make a Fruit class that extends from food class.
