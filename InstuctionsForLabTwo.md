@@ -3,9 +3,9 @@
 # What classes do I need:
 
 ## FileRead Class:
-A folderFile.FileReader class where it reads the txt file and and checks what category the object/food has, Then file reader should place it in that object category.
+A folderFile.FileService class where it reads the txt file and and checks what category the object/food has, Then file reader should place it in that object category.
 
-		ArrayList<Product>FoodProductIn= new ArrayList<Product>(); 
+		ArrayList<folderProducts>FoodProductIn= new ArrayList<folderProducts>(); 
 		int count=0;
 		public void read(File file) throws IOException
 		{
@@ -80,7 +80,7 @@ Something similiar to it asking you if you want to add product into the text fil
 
 The Katogories that exist is fruit, dry-goods, meat, frezzerfood
 
-## Food/Product class:
+## Food/folderProducts class:
 Here it will add EAN-KOD(streckkod) to the products, be able to print out the price of the food and add it to the shopping list(Another class).
 If it is removed food item from the array and add it to the shopping list.
 
