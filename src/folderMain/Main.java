@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         FileService ne= new FileService();
         ne.createdFile();
-        ne.productPlacement();
+        ne.addProduct();
 
     }
 }
