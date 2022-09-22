@@ -17,7 +17,6 @@ public class FileService {
     private File file = new File("storeStorageFile.txt");
     public FileWriter createdFile() throws FileNotFoundException {
 
-
         FileWriter output = null;
         if (!file.exists() && !file.isDirectory()) {
             try {
@@ -101,10 +100,9 @@ public class FileService {
                     System.out.println("What is the category of the product? ");
                     String category = in.nextLine();
                     output.write(category + ",");
-                    output.close();
-                    this.productPlacement();
                 }
-
+                output.close();
+                this.productPlacement();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
