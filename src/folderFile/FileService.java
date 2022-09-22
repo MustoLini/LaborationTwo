@@ -1,19 +1,26 @@
 package folderFile;
 
+import folderProducts.Product;
+
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class FileService {
 
 
-    Scanner in = new Scanner(System.in);
+    private Scanner in = new Scanner(System.in);
     private String nameOfFile;
 
+    private ArrayList<Product>productsInStore= new ArrayList<>();
+    String s;
+    private File file = new File("storeStorageFile.txt");
     public FileWriter createdFile() {
 
-        File file = new File("storeStorageFile.txt");
+
         FileWriter output = null;
-        if (!file.exists()&& !file.isDirectory()) {
+        if (!file.exists() && !file.isDirectory()) {
             try {
 
                 output = new FileWriter(file);
@@ -36,7 +43,6 @@ public class FileService {
                     System.out.println("What is the category of the product? ");
                     String category = in.nextLine();
                     output.write(category + ",");
-                    output.write("\n");
 
 
                 }
@@ -49,9 +55,25 @@ public class FileService {
                 throw new RuntimeException(e);
             }
             return output;
-        }
-        else {
+        } else {
             return null;
         }
     }
+    public ArrayList<Product> productPlacement() throws FileNotFoundException {
+        Scanner scanner = new Scanner(file);
+
+        while (scanner.hasNext() || scanner.hasNextLine()){
+            String writer= scanner.next();
+            String[] token= writer.split(",");
+            for (int i = 0; i < token.length; i+=4) {
+                System.out.println(token[i]);
+                Product newProduct= new Product(token[i],Integer.parseInt(token[i+1]),Integer.parseInt(token[i+2]), token[i+3]);
+                productsInStore.add(newProduct);
+            }
+
+        }
+        return productsInStore;
+
+    }
+
 }
