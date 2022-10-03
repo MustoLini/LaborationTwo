@@ -12,6 +12,8 @@ public class FileManager {
     Scanner in= new Scanner(System.in);
     private ArrayList<Product> productData= new ArrayList<>();
     BufferedReader reader;
+    String[]strings;
+    String inData="";
 
     public void fileReader() {
         {
@@ -29,7 +31,7 @@ public class FileManager {
     private void addProductFromFileIntoArray() throws IOException {
         String line;
         while ((line = reader.readLine())!=null){
-            String[]strings=line.split(",");
+            strings=line.split(",");
             for (int i = 0; i < strings.length; i+=4) {
                 System.out.println(strings[i]);
                 productData.add(i,new Product(strings[i],Integer.parseInt(strings[i+1]),Integer.parseInt(strings[i+2]),strings[i+3]));
@@ -52,12 +54,14 @@ public class FileManager {
 
 
     public String addIntoWriter(ArrayList<Product> productArrayList){
-        String inData="";
+        inData="";
         for (Product e: productArrayList) {
             inData+=e.getName()+","+ e.getPrice()+","+e.getCount()+","+e.getCategory()+","+"\n";
         }
+        System.out.println(inData);
         return inData;
     }
+
     public void populateArray(){
 
         boolean isRunning= true;
@@ -84,6 +88,7 @@ public class FileManager {
         }
 
     }
+
 
     public ArrayList<Product> getProductData() {
         return productData;
