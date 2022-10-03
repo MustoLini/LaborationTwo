@@ -4,22 +4,40 @@ import folderProducts.Product;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileManager {
     Scanner in= new Scanner(System.in);
-    ArrayList<Product> productData= new ArrayList<>();
+    private ArrayList<Product> productData= new ArrayList<>();
     BufferedReader reader;
 
     public void fileReader() {
         {
             try {
                 reader = new BufferedReader(new FileReader("storeStorageFile.txt"));
-            } catch (FileNotFoundException e) {
+                addProductFromFileIntoArray();
+
+
+            } catch (Exception e) {
                 fileWriter();
             }
         }
     }
+
+    private void addProductFromFileIntoArray() throws IOException {
+        String line;
+        while ((line = reader.readLine())!=null){
+            String[]strings=line.split(",");
+            for (int i = 0; i < strings.length; i+=4) {
+                System.out.println(strings[i]);
+                productData.add(i,new Product(strings[i],Integer.parseInt(strings[i+1]),Integer.parseInt(strings[i+2]),strings[i+3]));
+            }
+        }
+
+    }
+
     public void fileWriter(){
         try {
             BufferedWriter writer=  new BufferedWriter(new FileWriter("storeStorageFile.txt"));
@@ -31,10 +49,12 @@ public class FileManager {
             throw new RuntimeException(e);
         }
     }
+
+
     public String addIntoWriter(ArrayList<Product> productArrayList){
         String inData="";
         for (Product e: productArrayList) {
-            inData+=e.getName()+","+ e.getPrice()+","+"\n";
+            inData+=e.getName()+","+ e.getPrice()+","+e.getCount()+","+e.getCategory()+","+"\n";
         }
         return inData;
     }
@@ -44,12 +64,20 @@ public class FileManager {
 
         while (isRunning){
             System.out.println("Enter name: ");
-            String input= in.nextLine();
-            if (input.equalsIgnoreCase("e")){
+            String name= in.nextLine();
+            if (name.equalsIgnoreCase("e")){
                 isRunning=false;
             }
             else {
-                Product myProduct= new Product(input,32,34,"vdvs");
+                System.out.println("Enter price: ");
+                int price= in.nextInt();
+                in.nextLine();
+                System.out.println("Enter the count of the product: ");
+                int count= in.nextInt();
+                in.nextLine();
+                System.out.println("Enter the Category this product is in: ");
+                String category= in.nextLine();
+                Product myProduct= new Product(name,price,count,category);
                 productData.add(myProduct);
             }
 
@@ -57,4 +85,7 @@ public class FileManager {
 
     }
 
+    public ArrayList<Product> getProductData() {
+        return productData;
+    }
 }
