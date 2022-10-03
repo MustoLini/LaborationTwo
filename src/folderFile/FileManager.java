@@ -11,7 +11,7 @@ public class FileManager {
     ArrayList<Product> productData= new ArrayList<>();
     BufferedReader reader;
 
-    void fileReader() {
+    public void fileReader() {
         {
             try {
                 reader = new BufferedReader(new FileReader("storeStorageFile.txt"));
@@ -20,23 +20,25 @@ public class FileManager {
             }
         }
     }
-    void fileWriter(){
+    public void fileWriter(){
         try {
             BufferedWriter writer=  new BufferedWriter(new FileWriter("storeStorageFile.txt"));
             populateArray();
+            writer.write(addIntoWriter(productData));
+            writer.close();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    String addIntoWriter(ArrayList<Product> productArrayList){
+    public String addIntoWriter(ArrayList<Product> productArrayList){
         String inData="";
         for (Product e: productArrayList) {
             inData+=e.getName()+","+ e.getPrice()+","+"\n";
         }
         return inData;
     }
-    void populateArray(){
+    public void populateArray(){
 
         boolean isRunning= true;
 

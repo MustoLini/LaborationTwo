@@ -1,13 +1,13 @@
 package folderMain;
 
-import folderFile.FileService;
+import folderFile.FileManager;
 
 import java.io.FileNotFoundException;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        FileService ne= new FileService();
-        ne.createdFile();
+        FileManager re= new FileManager();
+        re.fileReader();
 
     }
 }
