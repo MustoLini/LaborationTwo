@@ -50,10 +50,12 @@ public class Product {
         this.price = price;
     }
 
+
+
     @Override
     public String toString() {
         return "Product:" +
-                "Name:'" + name + '\'' +
+                "Name:" + name +
                 ", Category:" + category  +
                 ", Price:" + price +
                 ", Count:" + count ;
