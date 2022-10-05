@@ -4,8 +4,6 @@ import folderProducts.Product;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class FileManager {
@@ -77,20 +75,25 @@ public class FileManager {
                 isRunning=false;
             }
             else {
-                System.out.println("Enter price: ");
-                int price= in.nextInt();
-                in.nextLine();
-                System.out.println("Enter the count of the product: ");
-                int count= in.nextInt();
-                in.nextLine();
-                System.out.println("Enter the Category this product is in: ");
-                String category= in.nextLine();
-                Product myProduct= new Product(name,price,count,category);
+                Product myProduct = getToAddProduct(name);
                 productData.add(myProduct);
             }
 
         }
 
+    }
+
+    public Product getToAddProduct(String name) {
+        System.out.println("Enter price: ");
+        int price= in.nextInt();
+        in.nextLine();
+        System.out.println("Enter the count of the product: ");
+        int count= in.nextInt();
+        in.nextLine();
+        System.out.println("Enter the Category this product is in: ");
+        String category= in.nextLine();
+        Product myProduct= new Product(name,price,count,category);
+        return myProduct;
     }
 
 
