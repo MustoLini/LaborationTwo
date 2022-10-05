@@ -8,46 +8,74 @@ import java.util.Scanner;
 
 public class FileManager {
     Scanner in= new Scanner(System.in);
-    ArrayList<Product> productData= new ArrayList<>();
+    private ArrayList<Product> productData= new ArrayList<>();
     BufferedReader reader;
+    String[]strings;
+    String inData="";
 
-    void fileReader() {
+    public void fileReader() {
         {
             try {
                 reader = new BufferedReader(new FileReader("storeStorageFile.txt"));
-            } catch (FileNotFoundException e) {
+                addProductFromFileIntoArray();
+
+
+            } catch (Exception e) {
                 fileWriter();
             }
         }
     }
-    void fileWriter(){
+
+    private void addProductFromFileIntoArray() throws IOException {
+        String line;
+        while ((line = reader.readLine())!=null){
+            strings=line.split(",");
+            for (int i = 0; i < strings.length; i+=4) {
+                System.out.println(strings[i]);
+                productData.add(i,new Product(strings[i],Integer.parseInt(strings[i+1]),Integer.parseInt(strings[i+2]),strings[i+3]));
+            }
+        }
+
+    }
+
+    public void fileWriter(){
         try {
             BufferedWriter writer=  new BufferedWriter(new FileWriter("storeStorageFile.txt"));
             populateArray();
+            AddIntoFile(writer);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    String addIntoWriter(ArrayList<Product> productArrayList){
-        String inData="";
+
+    public void AddIntoFile(BufferedWriter writer) throws IOException {
+        writer.write(addIntoWriter(productData));
+        writer.close();
+    }
+
+
+    public String addIntoWriter(ArrayList<Product> productArrayList){
+        inData="";
         for (Product e: productArrayList) {
-            inData+=e.getName()+","+ e.getPrice()+","+"\n";
+            inData+=e.getName()+","+ e.getPrice()+","+e.getCount()+","+e.getCategory()+","+"\n";
         }
+        System.out.println(inData);
         return inData;
     }
-    void populateArray(){
+
+    public void populateArray(){
 
         boolean isRunning= true;
 
         while (isRunning){
             System.out.println("Enter name: ");
-            String input= in.nextLine();
-            if (input.equalsIgnoreCase("e")){
+            String name= in.nextLine();
+            if (name.equalsIgnoreCase("e")){
                 isRunning=false;
             }
             else {
-                Product myProduct= new Product(input,32,34,"vdvs");
+                Product myProduct = getToAddProduct(name);
                 productData.add(myProduct);
             }
 
@@ -55,4 +83,21 @@ public class FileManager {
 
     }
 
+    public Product getToAddProduct(String name) {
+        System.out.println("Enter price: ");
+        int price= in.nextInt();
+        in.nextLine();
+        System.out.println("Enter the count of the product: ");
+        int count= in.nextInt();
+        in.nextLine();
+        System.out.println("Enter the Category this product is in: ");
+        String category= in.nextLine();
+        Product myProduct= new Product(name,price,count,category);
+        return myProduct;
+    }
+
+
+    public ArrayList<Product> getProductData() {
+        return productData;
+    }
 }
