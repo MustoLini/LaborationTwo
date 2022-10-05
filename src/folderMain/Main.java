@@ -1,26 +1,23 @@
 package folderMain;
 
 import folderFile.FileManager;
-import folderProducts.Product;
-import menuFile.Menu;
+import menuFile.MenuOptions;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         FileManager re= new FileManager();
         re.fileReader();
 
-        Menu menu= new Menu();
+        MenuOptions menu= new MenuOptions();
         menu.checkWhatIsInsideFile();
 
         menu.printProductThatIsLowestPrice();
         menu.printProductsThatIsHighestPrice();
         menu.printProductInStock();
-        menu.RemoveProductFromStock();
+        menu.removeProductFromStock();
+        menu.addProductsToList();
         //System.out.println(re.getProductData());
        // ArrayList<Product> productList= re.getProductData();
        // System.out.println(productList);
