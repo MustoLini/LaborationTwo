@@ -44,12 +44,16 @@ public class FileManager {
         try {
             BufferedWriter writer=  new BufferedWriter(new FileWriter("storeStorageFile.txt"));
             populateArray();
-            writer.write(addIntoWriter(productData));
-            writer.close();
+            AddIntoFile(writer);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void AddIntoFile(BufferedWriter writer) throws IOException {
+        writer.write(addIntoWriter(productData));
+        writer.close();
     }
 
 
