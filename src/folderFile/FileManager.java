@@ -31,7 +31,7 @@ public class FileManager {
         while ((line = reader.readLine())!=null){
             strings=line.split(",");
             for (int i = 0; i < strings.length; i+=4) {
-                System.out.println(strings[i]);
+                //System.out.println(strings[i]);
                 productData.add(i,new Product(strings[i],Integer.parseInt(strings[i+1]),Integer.parseInt(strings[i+2]),strings[i+3]));
             }
         }
@@ -60,7 +60,7 @@ public class FileManager {
         for (Product e: productArrayList) {
             inData+=e.getName()+","+ e.getPrice()+","+e.getCount()+","+e.getCategory()+","+"\n";
         }
-        System.out.println(inData);
+        //System.out.println(inData);
         return inData;
     }
 
@@ -69,7 +69,7 @@ public class FileManager {
         boolean isRunning= true;
 
         while (isRunning){
-            System.out.println("Enter name: ");
+            System.out.println("Enter Product name: ");
             String name= in.nextLine();
             if (name.equalsIgnoreCase("e")){
                 isRunning=false;
@@ -84,7 +84,7 @@ public class FileManager {
     }
 
     public Product getToAddProduct(String name) {
-        System.out.println("Enter price: ");
+        System.out.println("Enter Product price: ");
         int price= in.nextInt();
         in.nextLine();
         System.out.println("Enter the count of the product: ");
