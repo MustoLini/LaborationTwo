@@ -10,9 +10,14 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class MenuOptions {
-    FileManager productStockFile= new FileManager();
-    ArrayList<Product> productArrayList= productStockFile.getProductData();
+    FileManager productStockFile;
+    ArrayList<Product> productArrayList;
     Scanner in= new Scanner(System.in);
+    public void startProgram(){
+        productStockFile= new FileManager();
+        productStockFile.fileReader();
+        productArrayList= productStockFile.getProductData();
+    }
     public void checkWhatIsInsideFile(){
         productStockFile.fileReader();
     }
@@ -30,6 +35,8 @@ public class MenuOptions {
         printProductInStock();
     }
     public void removeProductFromStock(){
+        System.out.println("What Item do you want to remove: ");
+        printProductInStock();
         int productToRemove= in.nextInt();
         in.nextLine();
         if (productToRemove<=0){
@@ -58,5 +65,9 @@ public class MenuOptions {
         productArrayList.add(myProduct);
         reAddIntoFile();
 
+    }
+
+    public void exitProgram(){
+        System.exit(1);
     }
 }
