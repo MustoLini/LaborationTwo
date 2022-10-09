@@ -1,0 +1,5 @@
+Milk,12,35,Milk,
+Meat,35,34,Meat,
+Mango,7,78,Fruit,
+Apple,5,90,Fruit,
+Juice,23,90,Juice,
