@@ -10,8 +10,10 @@ public class FileManager {
     Scanner in= new Scanner(System.in);
     private ArrayList<Product> productData= new ArrayList<>();
     BufferedReader reader;
+
     String[]strings;
     String inData="";
+    int idCount=1;
 
     public void fileReader() {
         {
@@ -30,9 +32,9 @@ public class FileManager {
         String line;
         while ((line = reader.readLine())!=null){
             strings=line.split(",");
-            for (int i = 0; i < strings.length; i+=4) {
+            for (int i = 0; i < strings.length; i+=5) {
                 //System.out.println(strings[i]);
-                productData.add(i,new Product(strings[i],Integer.parseInt(strings[i+1]),Integer.parseInt(strings[i+2]),strings[i+3]));
+                productData.add(i,new Product(Integer.parseInt(strings[i]),strings[i+1],Integer.parseInt(strings[i+2]),Integer.parseInt(strings[i+3]),strings[i+4]));
             }
         }
 
@@ -57,9 +59,10 @@ public class FileManager {
 
     public String addIntoWriter(ArrayList<Product> productArrayList){
         inData="";
-        for (Product e: productArrayList) {
-            inData+=e.getName()+","+ e.getPrice()+","+e.getCount()+","+e.getCategory()+","+"\n";
-        }
+        productArrayList.forEach(e -> {
+            e.setId(idCount++);
+            inData += e.getId() + "," + e.getName() + "," + e.getPrice() + "," + e.getCount() + "," + e.getCategory() + "," + "\n";
+        });
         //System.out.println(inData);
         return inData;
     }
@@ -92,7 +95,7 @@ public class FileManager {
         in.nextLine();
         System.out.println("Enter the Category this product is in: ");
         String category= in.nextLine();
-        Product myProduct= new Product(name,price,count,category);
+        Product myProduct= new Product(idCount,name,price,count,category);
         return myProduct;
     }
 
