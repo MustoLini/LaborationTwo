@@ -5,9 +5,9 @@ import folderProducts.Product;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class MenuOptions {
     FileManager productStockFile;
@@ -22,17 +22,21 @@ public class MenuOptions {
         productStockFile.fileReader();
     }
     public void printProductInStock(){
-        for (int i = 0; i < productArrayList.size(); i++) {
-            System.out.println(i+1+": "+productArrayList.get(i));
+        List<Product> sortedList= productArrayList.stream().sorted(Comparator.comparingInt(Product::getId)).toList();
+        for (int i = 0; i < sortedList.size(); i++) {
+            System.out.println(sortedList.get(i));
         }
+        System.out.println(" ");
     }
     public void printProductThatIsLowestPrice(){
-        productArrayList.sort(Comparator.comparingInt(Product::getPrice));
-        printProductInStock();
+        productArrayList.stream().sorted(Comparator.comparingInt(Product::getPrice));
+        productArrayList.stream().forEach(System.out::println);
+        System.out.println(" ");
     }
     public void printProductsThatIsHighestPrice(){
         productArrayList.sort(Comparator.comparingInt(Product::getPrice).reversed());
-        printProductInStock();
+        productArrayList.stream().forEach(System.out::println);
+        System.out.println(" ");
     }
     public void removeProductFromStock(){
         System.out.println("What Item do you want to remove: ");
