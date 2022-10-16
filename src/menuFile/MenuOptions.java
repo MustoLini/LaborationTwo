@@ -38,7 +38,7 @@ public class MenuOptions {
         productArrayList.stream().forEach(System.out::println);
         System.out.println(" ");
     }
-    public void removeProductFromStock(){
+    public ArrayList<Product> removeProductFromStock(){
         System.out.println("What Item do you want to remove: ");
         printProductInStock();
         int productToRemove= in.nextInt();
@@ -47,10 +47,11 @@ public class MenuOptions {
             System.out.println("You can't remove nothing");
         }
         if (productToRemove>=1){
-            productArrayList.remove(productToRemove-1);
+           int remove= productArrayList.get(productToRemove).getCount();
+            productArrayList.get(productToRemove).setCount(remove-1);
             reAddIntoFile();
-
         }
+        return productArrayList;
     }
 
     private void reAddIntoFile() {

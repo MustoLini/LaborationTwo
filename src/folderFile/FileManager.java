@@ -59,10 +59,11 @@ public class FileManager {
 
     public String addIntoWriter(ArrayList<Product> productArrayList){
         inData="";
-        productArrayList.forEach(e -> {
-            e.setId(idCount++);
+        for (Product e : productArrayList) {
+            if (!productArrayList.contains(e)){
+            e.setId(idCount++);}
             inData += e.getId() + "," + e.getName() + "," + e.getPrice() + "," + e.getCount() + "," + e.getCategory() + "," + "\n";
-        });
+        }
         //System.out.println(inData);
         return inData;
     }
